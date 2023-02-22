@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		30580D1629A59680004269B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30580D1529A59680004269B3 /* AppDelegate.swift */; };
 		30580D1829A59680004269B3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30580D1729A59680004269B3 /* SceneDelegate.swift */; };
-		30580D1A29A59680004269B3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30580D1929A59680004269B3 /* ViewController.swift */; };
+		30580D1A29A59680004269B3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30580D1929A59680004269B3 /* LoginViewController.swift */; };
 		30580D1D29A59680004269B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30580D1B29A59680004269B3 /* Main.storyboard */; };
 		30580D1F29A59681004269B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30580D1E29A59681004269B3 /* Assets.xcassets */; };
 		30580D2229A59681004269B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30580D2029A59681004269B3 /* LaunchScreen.storyboard */; };
+		30580D2A29A59A59004269B3 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30580D2929A59A59004269B3 /* UdacityClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		30580D1229A59680004269B3 /* OnThemap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnThemap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30580D1529A59680004269B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30580D1729A59680004269B3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		30580D1929A59680004269B3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		30580D1929A59680004269B3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		30580D1C29A59680004269B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		30580D1E29A59681004269B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		30580D2129A59681004269B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		30580D2329A59681004269B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30580D2929A59A59004269B3 /* UdacityClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +60,8 @@
 			children = (
 				30580D1529A59680004269B3 /* AppDelegate.swift */,
 				30580D1729A59680004269B3 /* SceneDelegate.swift */,
-				30580D1929A59680004269B3 /* ViewController.swift */,
+				30580D1929A59680004269B3 /* LoginViewController.swift */,
+				30580D2929A59A59004269B3 /* UdacityClient.swift */,
 				30580D1B29A59680004269B3 /* Main.storyboard */,
 				30580D1E29A59681004269B3 /* Assets.xcassets */,
 				30580D2029A59681004269B3 /* LaunchScreen.storyboard */,
@@ -138,7 +141,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30580D1A29A59680004269B3 /* ViewController.swift in Sources */,
+				30580D2A29A59A59004269B3 /* UdacityClient.swift in Sources */,
+				30580D1A29A59680004269B3 /* LoginViewController.swift in Sources */,
 				30580D1629A59680004269B3 /* AppDelegate.swift in Sources */,
 				30580D1829A59680004269B3 /* SceneDelegate.swift in Sources */,
 			);
