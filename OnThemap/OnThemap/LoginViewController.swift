@@ -36,21 +36,11 @@ class LoginViewController: UIViewController {
     }
     
     private func setupStackViews() {
-        udacityLoginStackView.axis = .vertical
-        udacityLoginStackView.distribution = .fill
-        udacityLoginStackView.alignment = .fill
-        udacityLoginStackView.spacing = 16
-        udacityLoginStackView.accessibilityIdentifier = "udacityLoginStackView"
-        
         loginStackView.axis = .vertical
         loginStackView.distribution = .fill
         loginStackView.alignment = .fill
-        loginStackView.spacing = 8
+        loginStackView.spacing = 12
         loginStackView.accessibilityIdentifier = "loginStackView"
-        
-        udacityLoginStackView.addArrangedSubview(udacityLogo)
-        udacityLoginStackView.addArrangedSubview(loginStackView)
-        udacityLoginStackView.addArrangedSubview(signupLabel)
         
         loginStackView.addArrangedSubview(emailTextField)
         loginStackView.addArrangedSubview(passwordTextField)
@@ -86,13 +76,13 @@ class LoginViewController: UIViewController {
     
     private func setupConstraints() {
         view.translatesAutoresizingMaskIntoConstraints = false
-        udacityLoginStackView.translatesAutoresizingMaskIntoConstraints = false
+        loginStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        view.addSubview(udacityLoginStackView)
+        view.addSubview(loginStackView)
         
-        udacityLoginStackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: self.view.frame.width / 4).isActive = true
+        loginStackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: self.view.frame.width / 4).isActive = true
 
-        let constraint = NSLayoutConstraint(item: udacityLoginStackView,
+        let constraint = NSLayoutConstraint(item: loginStackView,
                                             attribute: .centerY,
                                             relatedBy: .equal,
                                             toItem: view,
