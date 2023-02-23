@@ -15,8 +15,9 @@ class LoginViewController: UIViewController {
     private var passwordTextField = UITextField()
     private var loginButton = UIButton()
     private var udacityLogo = UIImageView()
-    private var signupTextField = UILabel()
+    private var signupLabel = UILabel()
     private var loginStackView = UIStackView()
+    private var udacityLoginStackView = UIStackView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,18 +28,29 @@ class LoginViewController: UIViewController {
     // MARK: - UI Setup
     private func setupUI() {
         setupConstraints()
+        setupStackViews()
         setupTextFieldsUI()
-        setupStackView()
         setupUdacityLogo()
         setupLoginButtonUI()
+        setupSignupLabel()
     }
     
-    private func setupStackView() {
+    private func setupStackViews() {
+        udacityLoginStackView.axis = .vertical
+        udacityLoginStackView.distribution = .fill
+        udacityLoginStackView.alignment = .fill
+        udacityLoginStackView.spacing = 16
+        udacityLoginStackView.accessibilityIdentifier = "udacityLoginStackView"
+        
         loginStackView.axis = .vertical
         loginStackView.distribution = .fill
         loginStackView.alignment = .fill
         loginStackView.spacing = 8
         loginStackView.accessibilityIdentifier = "loginStackView"
+        
+        udacityLoginStackView.addArrangedSubview(udacityLogo)
+        udacityLoginStackView.addArrangedSubview(loginStackView)
+        udacityLoginStackView.addArrangedSubview(signupLabel)
         
         loginStackView.addArrangedSubview(emailTextField)
         loginStackView.addArrangedSubview(passwordTextField)
@@ -47,7 +59,13 @@ class LoginViewController: UIViewController {
     
     private func setupUdacityLogo() {
         udacityLogo.image = UIImage(named: "logo-u")
+        udacityLogo.contentMode = .scaleAspectFit
     }
+    
+    private func setupSignupLabel() {
+        signupLabel.text = NSLocalizedString("Don't have an account? Sign up", comment: "Contains link to sign up on Udacity's website")
+    }
+    
     
     private func setupTextFieldsUI() {
         emailTextField.placeholder = NSLocalizedString("Email", comment: "Email used to log into Udacity's website")
@@ -68,13 +86,13 @@ class LoginViewController: UIViewController {
     
     private func setupConstraints() {
         view.translatesAutoresizingMaskIntoConstraints = false
-        loginStackView.translatesAutoresizingMaskIntoConstraints = false
+        udacityLoginStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        view.addSubview(loginStackView)
+        view.addSubview(udacityLoginStackView)
         
-        loginStackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: self.view.frame.width / 4).isActive = true
+        udacityLoginStackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: self.view.frame.width / 4).isActive = true
 
-        let constraint = NSLayoutConstraint(item: loginStackView,
+        let constraint = NSLayoutConstraint(item: udacityLoginStackView,
                                             attribute: .centerY,
                                             relatedBy: .equal,
                                             toItem: view,
