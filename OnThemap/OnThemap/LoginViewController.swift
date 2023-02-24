@@ -1,96 +1,100 @@
-//
-//  ViewController.swift
-//  OnThemap
-//
-//  Created by Justin on 2/21/23.
-//
-
+import Foundation
 import UIKit
 
 class LoginViewController: UIViewController {
-    
-    // MARK: - Private Variables
-    
-    private var emailTextField = UITextField()
-    private var passwordTextField = UITextField()
-    private var loginButton = UIButton()
-    private var udacityLogo = UIImageView()
-    private var signupLabel = UILabel()
-    private var loginStackView = UIStackView()
-    private var udacityLoginStackView = UIStackView()
+
+    let logoImageView = UIImageView()
+    let emailTextField = UITextField()
+    let passwordTextField = UITextField()
+    let loginButton = UIButton(type: .system)
+    let stackView = UIStackView()
+    let udacityBlue = UIColor(red: 0/255, green: 191/255, blue: 255/255, alpha: 1)
+    let signupTextView = UITextView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         setupUI()
     }
-
-    // MARK: - UI Setup
+    
     private func setupUI() {
+        setupStackView()
+        setupLogoImageView()
+        setupTextfields()
+        setupLoginButton()
+        setupSignupTextView()
+        
         setupConstraints()
-        setupStackViews()
-        setupTextFieldsUI()
-        setupUdacityLogo()
-        setupLoginButtonUI()
-        setupSignupLabel()
     }
     
-    private func setupStackViews() {
-        loginStackView.axis = .vertical
-        loginStackView.distribution = .fill
-        loginStackView.alignment = .fill
-        loginStackView.spacing = 12
-        loginStackView.accessibilityIdentifier = "loginStackView"
+    private func setupStackView() {
+        stackView.axis = .vertical
+        stackView.spacing = 20.0
+        stackView.alignment = .center
+        view.addSubview(stackView)
         
-        loginStackView.addArrangedSubview(emailTextField)
-        loginStackView.addArrangedSubview(passwordTextField)
-        loginStackView.addArrangedSubview(loginButton)
+        stackView.addArrangedSubview(logoImageView)
+        stackView.addArrangedSubview(emailTextField)
+        stackView.addArrangedSubview(passwordTextField)
+        stackView.addArrangedSubview(loginButton)
+        stackView.addArrangedSubview(signupTextView)
     }
     
-    private func setupUdacityLogo() {
-        udacityLogo.image = UIImage(named: "logo-u")
-        udacityLogo.contentMode = .scaleAspectFit
+    private func setupLogoImageView() {
+        logoImageView.image = UIImage(named: "logo-u")
+        logoImageView.contentMode = .scaleAspectFit
     }
     
-    private func setupSignupLabel() {
-        signupLabel.text = NSLocalizedString("Don't have an account? Sign up", comment: "Contains link to sign up on Udacity's website")
-    }
-    
-    
-    private func setupTextFieldsUI() {
-        emailTextField.placeholder = NSLocalizedString("Email", comment: "Email used to log into Udacity's website")
-        emailTextField.accessibilityIdentifier = "emailTextFieldIdentifier"
-        emailTextField.accessibilityLabel = "emailTextField"
-        
-        passwordTextField.placeholder = NSLocalizedString("Password", comment: "Password used to log into Udacity's website")
-        passwordTextField.accessibilityIdentifier = "passwordTextFieldIdentifier"
-        passwordTextField.accessibilityLabel = "passwordTextField"
+    private func setupTextfields() {
+        // Set up the email text field
+        emailTextField.placeholder = "Email"
+        emailTextField.keyboardType = .emailAddress
+        emailTextField.borderStyle = .roundedRect
+
+        // Set up the password text field
+        passwordTextField.placeholder = "Password"
         passwordTextField.isSecureTextEntry = true
+        passwordTextField.borderStyle = .roundedRect
     }
     
-    private func setupLoginButtonUI() {
-        loginButton.setTitle(NSLocalizedString("Log In", comment: "Button used to log into Udacity's website"), for: .normal)
-        loginButton.titleLabel?.textColor = .white
-        loginButton.backgroundColor = .systemBlue
+    private func setupLoginButton() {
+        loginButton.setTitle("Login", for: .normal)
+        loginButton.setTitleColor(.white, for: .normal)
+        loginButton.backgroundColor = udacityBlue
+        loginButton.layer.cornerRadius = 5.0
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+    }
+    
+    private func setupSignupTextView() {
+        // Create attributed text for the sign up message
+        let signUpMessage = "Don't have an account? Sign up"
+        let attributedString = NSMutableAttributedString(string: signUpMessage)
+        let range = (signUpMessage as NSString).range(of: "Sign up")
+        attributedString.addAttribute(.link, value: "https://google.com", range: range)
+        
+        // Set up the sign-up label
+        signupTextView.attributedText = attributedString
+        signupTextView.textColor = .black
+        signupTextView.isSelectable = true
+        signupTextView.isScrollEnabled = false
     }
     
     private func setupConstraints() {
-        view.translatesAutoresizingMaskIntoConstraints = false
-        loginStackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         
-        view.addSubview(loginStackView)
-        
-        loginStackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: self.view.frame.width / 4).isActive = true
-
-        let constraint = NSLayoutConstraint(item: loginStackView,
-                                            attribute: .centerY,
-                                            relatedBy: .equal,
-                                            toItem: view,
-                                            attribute: .bottom,
-                                            multiplier: 1/3,
-                                            constant: 0)
-        constraint.isActive = true
+        NSLayoutConstraint.activate([
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            emailTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.75),
+            passwordTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.75),
+            loginButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.75),
+            loginButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
 
+    @objc func loginButtonTapped() {
+        // Handle the login button tap event here
+        print("Logging in...")
+    }
 }
-
