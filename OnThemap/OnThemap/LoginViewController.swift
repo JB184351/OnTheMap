@@ -69,7 +69,7 @@ class LoginViewController: UIViewController {
         let signUpMessage = "Don't have an account? Sign up"
         let attributedString = NSMutableAttributedString(string: signUpMessage)
         let range = (signUpMessage as NSString).range(of: "Sign up")
-        attributedString.addAttribute(.link, value: "https://google.com", range: range)
+        attributedString.addAttribute(.link, value: "https://auth.udacity.com/sign-up", range: range)
         
         // Set up the sign-up label
         signupTextView.attributedText = attributedString
