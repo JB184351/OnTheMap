@@ -95,6 +95,31 @@ class LoginViewController: UIViewController {
 
     @objc func loginButtonTapped() {
         // Handle the login button tap event here
-        print("Logging in...")
+        let tabBarController = UITabBarController()
+        
+        let unselectedMapImage = UIImage(named: "icon_mapview-deselected")
+        let selectedMapImage = UIImage(named: "icon_mapview-selected")
+        
+        let unselectedLocationListImage = UIImage(named: "icon_listview-selected")
+        let selectedLocationListImage = UIImage(named: "icon_listview-deselected")
+        
+        let mapViewController = MapViewController()
+        mapViewController.view.backgroundColor = .red
+        mapViewController.tabBarItem = UITabBarItem(title: nil, image: unselectedMapImage, selectedImage: selectedMapImage)
+        
+        let locationListTableViewController = LocationTabBarController()
+        locationListTableViewController.view.backgroundColor = .green
+        locationListTableViewController.tabBarItem = UITabBarItem(title: nil, image: unselectedLocationListImage, selectedImage: selectedLocationListImage)
+        
+        
+        tabBarController.viewControllers = [mapViewController, locationListTableViewController]
+        tabBarController.selectedViewController = mapViewController
+        
+        
+        present(tabBarController, animated: true, completion: nil)
+    }
+    
+    func presentTabBarController() {
+        
     }
 }
