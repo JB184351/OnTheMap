@@ -13,25 +13,27 @@ class LocationTabBarController: UITabBarController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-//        setupTabBars()
+        setupTabBars()
     }
     
     private func setupTabBars() {
-        let mapViewController = MapViewController()
-        mapViewController.view.backgroundColor = .red
-        
-        let locationListTableViewController = LocationTabBarController()
-        locationListTableViewController.view.backgroundColor = .green
-        
-        self.viewControllers = [mapViewController, locationListTableViewController]
-        self.selectedViewController = mapViewController // Initially display the second view controller
-        
         let unselectedMapImage = UIImage(named: "icon_mapview-deselected")
         let selectedMapImage = UIImage(named: "icon_mapview-selected")
         
-        let mapTabBarItem = UITabBarItem(title: nil, image: unselectedMapImage, selectedImage: selectedMapImage)
+        let unselectedLocationListImage = UIImage(named: "icon_listview-selected")
+        let selectedLocationListImage = UIImage(named: "icon_listview-deselected")
         
-        self.tabBarItem = mapTabBarItem
+        let mapViewController = MapViewController()
+        mapViewController.view.backgroundColor = .orange
+        mapViewController.tabBarItem = UITabBarItem(title: nil, image: unselectedMapImage, selectedImage: selectedMapImage)
+        
+        let locationListTableViewController = LocationTabBarController()
+        locationListTableViewController.view.backgroundColor = .blue
+        locationListTableViewController.tabBarItem = UITabBarItem(title: nil, image: unselectedLocationListImage, selectedImage: selectedLocationListImage)
+        
+        
+        self.viewControllers = [mapViewController, locationListTableViewController]
+        self.selectedViewController = mapViewController
     }
 
 }
