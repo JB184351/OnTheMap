@@ -26,8 +26,8 @@ class MapViewController: UIViewController {
         mapView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            mapView.topAnchor.constraint(equalTo: view.topAnchor),
-            mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            mapView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height / 8),
+            mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -view.frame.height / 8),
             mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
